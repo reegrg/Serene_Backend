@@ -1,0 +1,3 @@
+Nodejs is a framework that helps to create runtime environment in react js.
+Framework: structure driven and task completion
+Library: Doesn't need to follow the structure but focuses on task completion.
