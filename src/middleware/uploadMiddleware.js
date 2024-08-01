@@ -49,12 +49,26 @@ const profileImageStorage = diskStorage({
   filename,
 });  //where to store and what to store is done by diskStorage
 
+// product image storage
+
+const productImageStorage = diskStorage({
+  destination: getDestination("products"),
+  filename,
+});
+
 // Multer instances
 const profileImage = multer({
   storage: profileImageStorage,
   fileFilter: filter,
 });
 
+// Multer instances
+const productImage = multer({
+  storage: productImageStorage,
+  fileFilter: filter,
+});
+
 module.exports = {
   profileImage,
+  productImage
 };

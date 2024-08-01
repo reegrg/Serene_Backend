@@ -1,5 +1,5 @@
 const domain = "http://localhost:5000";
-const UserProfiles = require("../models/userProfile");
+const UserProfiles = require("../models/userProfileModel");
 // Helper function to send error responses
 const sendErrorResponse = (res, error) => {
   res.status(500).json({ msg: error.message });
@@ -10,6 +10,8 @@ const updateUserProfile = async (req, res) => {
   try {
     const { bio } = req.body;
     let updateData = { bio };
+
+    // console.log(req.file)
 
     if (req.file) {
       const profileImage = `${domain}/uploads/profiles/${req.file.filename}`;

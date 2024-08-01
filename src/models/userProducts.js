@@ -3,22 +3,33 @@ const {Schema}=mongoose; //destructure schema from mongoose
 // const schema=mongoose.Schema(); //another way of above code
 
 //Schema is used to provide the data structure
-const userProductsSchema=new Schema({
-    product:{
+const productSchema=new Schema({
+    name:{
         type:String,
         requried: true
     },
    
-    rating: {
+    price: {
         type:Number,
         required: true
     },
-    message: {
+    description: {
         type:String,
         required: true
-    }
-    
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
+    },
+    reviews: {
+        type: String,
+        required: true
+    },
+    productImage: {
+        type: String,
+    } 
 });
 
-const UserProducts=mongoose.model('UserProducts', userProductsSchema);
-module.exports=UserProducts;
+const Products=mongoose.model('Products', productSchema);
+module.exports=Products;

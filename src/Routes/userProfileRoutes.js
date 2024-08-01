@@ -3,6 +3,6 @@ const userProfile = require('../controllers/userProfileController');
 const app=express();
 
 
-app.post('/userProfile', userProfile); 
+app.post('/userProduct', userProfile); 
 
 module.exports = app;

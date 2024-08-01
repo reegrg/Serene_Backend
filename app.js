@@ -135,6 +135,8 @@ const userAddressRoutes = require("./src/Routes/userAddressRoutes");
 const userReviewsRoutes = require('./src/Routes/userReviewsRoutes');
 const authRoutes = require('./src/Routes/authRoutes');
 const profileRoutes = require('./src/Routes/profileRoutes');
+const productRoutes = require('./src/Routes/productRoutes');
+const productCategoryRoutes = require('./src/Routes/categoryRoutes');
 connectDB();
 app.use(express.json()); //process the text to expresson json and viceversa
 
@@ -147,6 +149,8 @@ app.use('/user', userProfileRoutes);
 app.use('/user', userAddressRoutes);
 app.use('/user', userReviewsRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api', productRoutes);
+app.use('/api', productCategoryRoutes);
 
 
 // Serve static files from the 'uploads' directory
