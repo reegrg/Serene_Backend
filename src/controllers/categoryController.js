@@ -8,7 +8,7 @@ const addCategory = async (req, res) => {
   const { name, descriptions } = req.body;
 
   try {
-    const categoryExists = await ProductCategory.findOne({ name });
+    const categoryExists = await ProductCategory.findOneAndUpdate({ name });
     if(categoryExists) {
       return res.status(400).json({ msg: "Category already exists!" });
     }
@@ -29,6 +29,30 @@ const addCategory = async (req, res) => {
   }
 };
 
+// update category controller
+// const updateCategory = async (req, res) => {
+//   const {name, descriptions} = req.body;
+//   try {
+//     const category = await ProductCategory.findById({_id: req.params.id,});
+//     if(!category) {
+//       return res.status(404).json({ msg: "Category not found!" });
+//     }
+//     if (name) {
+//       category.name = name;
+//     }
+//     if (descriptions) {
+//       category.descriptions = descriptions;
+//     }
+//     await category.save();
+//     res.status(200).json({
+//       msg: "Category updated sucessfully!",
+//       category: category,
+//       success: true,
+//     });
+//   } catch (error) {
+//     sendErrorResponse(res, error);
+//   }
+// };
 // update category controller
 const updateCategory = async (req, res) => {
   try {
@@ -53,5 +77,17 @@ const updateCategory = async (req, res) => {
     sendErrorResponse(res, error);
   }
 };
+
+// const deleteCategory =async (req, res) => {
+//   try {
+//     const category = await ProductCategory.findByIdAndDelete(req.params.id);
+//     if(!category) {
+//       return res.json(404)({msg: "Category not found!"});
+//     }
+//     return res.json(200)({msg: "Category deleted successfully!"});
+//   } catch(error) {
+//     return res.json(500)({msg: error.message});
+//   }
+// };
 
 module.exports = {addCategory, updateCategory};
